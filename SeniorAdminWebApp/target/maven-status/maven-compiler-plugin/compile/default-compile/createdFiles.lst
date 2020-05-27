@@ -1,0 +1,8 @@
+demo\web\app\servlets\city\AddNewCity.class
+demo\web\app\servlets\area\addNewArea.class
+demo\web\app\servlets\city\UpdateCity.class
+demo\web\app\authentication\AuthorizationManager.class
+demo\web\app\servlets\login\UserLogin.class
+demo\web\app\servlets\city\DeleteCurrentCity.class
+demo\web\app\servlets\area\DeleteCurrentArea.class
+demo\web\app\servlets\area\UpdateArea.class

@@ -1,0 +1,46 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+    <h2 class="font-weight-bold" style="margin:15px ;">Manage Provider List</h2>
+    <div style="margin-left: 1100px;">
+        <button class="btn btn-success" (click)="addNewProvider()">Add New Provider</button>
+    </div>
+    <div *ngIf='message' class="alert alert-success">{{message}}</div>
+    <div class="container">
+        <table width="40%" class="table" >
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Id</th>
+                    <th>Name In Arabic</th>
+                    <th>Name In English</th>
+                    <th>Hotline</th>
+                    <th>View Branches</th>
+                    <th>View Categories</th>
+                    <th>View Users</th>
+                    <td>Update</td>
+                    <td>Delete</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let iProvider of ProviderList;let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{iProvider.id}}</td>
+                    <td>{{iProvider.nameAr}}</td>
+                    <td>{{iProvider.nameEn}}</td>
+                    <td>{{iProvider.hotline}}</td>
+                    <td><button class="btn btn-info" (click)="viewBranches(iProvider.id)">Branches</button></td>
+                    <td><button class="btn btn-info" (click)="viewCategories(iProvider.id)">Categories</button></td>
+                    <td><button class="btn btn-info" (click)="viewUsers(iProvider.id)">Users</button></td>
+                    <td><button class="btn btn-primary" (click)="updateProvider(iProvider.id)">update</button></td>
+                    <td><button class="btn btn-danger" (click)="removeProvider(iProvider.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

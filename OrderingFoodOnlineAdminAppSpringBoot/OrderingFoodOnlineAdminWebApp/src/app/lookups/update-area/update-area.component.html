@@ -1,0 +1,17 @@
+<div style="margin-left: 10px;">
+    <h2 class="font-weight-bold">Update <span style="font-weight: bold; color: blue;">{{area.nameEn}}</span></h2>
+</div>
+<div class="container">
+    <fieldset class="form-groub">
+        <label>Area Name in Arabic</label>
+        <input class="form-control" type="text" [(ngModel)]="area.nameAr" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>Area Name in English</label>
+        <input class="form-control" type="text" [(ngModel)]="area.nameEn" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <button style="margin: 10px;" class="btn btn-primary" (click)="updateArea()">Update</button>
+        <button class="btn btn-warning" (click)="back()">Back</button>
+    </fieldset>
+</div>

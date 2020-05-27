@@ -1,0 +1,32 @@
+<h2 class="font-weight-bold" style="margin:15px ;">Manage Area List of <span style="color: blue;">{{city.nameEn}}</span></h2>
+<div style="margin-left: 1100px;">
+    <button class="btn btn-success" (click)="addNewArea()">Add New Area</button><button style="margin-left: 5px;"
+        class="btn btn-warning" (click)="back()">back</button>
+</div>
+<div style="margin:10px ;">
+    <div *ngIf='message' class="alert alert-success">{{message}}</div>
+    <div class="container">
+        <table width="40%" class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th hidden>Id</th>
+                    <th>Area Name In Arabic</th>
+                    <th>Area Name In English</th>
+                    <td>Update</td>
+                    <td>Delete</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let iArae of areaList;let i=index">
+                    <td>{{i+1}}</td>
+                    <td hidden ><a>{{iArae.id}}</a></td>
+                    <td>{{iArae.nameAr}}</td>
+                    <td>{{iArae.nameEn}}</td>
+                    <td><button class="btn btn-primary" (click)="updateArea(iArae.id)">update</button></td>
+                    <td><button class="btn btn-danger" (click)="removeArea(iArae.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div style="margin-left: 10px;">
+    <h2 style="color: blue;" class="font-weight-bold">Add New City</h2>
+</div>
+<div class="container">
+    <fieldset class="form-groub">
+        <label>City Name in Arabic</label>
+        <input class="form-control" type="text" [(ngModel)]="city.nameAr"  required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>City Name in English</label>
+        <input class="form-control" type="text" [(ngModel)]="city.nameEn" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <button style="margin: 10px;" class="btn btn-success" (click)="addCity()">Add</button>
+        <button class="btn btn-warning" (click)="back()">Back</button>
+    </fieldset>
+</div>

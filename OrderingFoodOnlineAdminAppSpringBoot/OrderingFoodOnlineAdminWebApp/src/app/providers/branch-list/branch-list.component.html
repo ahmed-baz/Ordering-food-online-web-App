@@ -1,0 +1,45 @@
+<h2 class="font-weight-bold" style="margin:15px ;">Manage Branch List of <span style="color: blue;">{{provider.nameEn}}</span></h2>
+<div style="margin-left: 1100px;">
+    <button class="btn btn-success" (click)="addBranch()">Add New Branch</button><button style="margin-left: 5px;"
+        class="btn btn-warning" (click)="back()">back</button>
+</div>
+<div style="margin:10px ;">
+    <div *ngIf='message' class="alert alert-success">{{message}}</div>
+    <div class="container">
+        <table width="40%" class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Id</th>
+                    <th>Name Ar</th>
+                    <th>Name En</th>
+                    <th>Open At</th>
+                    <th>Close At</th>
+                    <th>Phone</th>
+                    <th>Area</th>
+                    <th>Delivery Area</th>
+                    <th>Users</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let iBranch of branchList;let i=index">
+                    <td>{{i+1}}</td>
+                    <td><a>{{iBranch.id}}</a></td>
+                    <td>{{iBranch.nameAr}}</td>
+                    <td>{{iBranch.nameEn}}</td>
+                    <td>{{iBranch.openAt | date:'shortTime' }}</td>
+                    <td>{{iBranch.closeAt | date:'shortTime'}}</td>
+                    <td>{{iBranch.phone}}</td>
+                    <td>{{iBranch.area.nameEn}}</td>
+
+                    <td><button class="btn btn-info" (click)="viewDeliveryArea(iBranch.id)">View Areas</button></td>
+                    <td><button class="btn btn-info" (click)="viewUsers(iBranch.id)">Users</button></td>
+                    <td><button class="btn btn-primary" (click)="updateBranch(iBranch.id)">update</button></td>
+                    <td><button class="btn btn-danger" (click)="removeBranch(iBranch.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

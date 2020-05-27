@@ -1,0 +1,19 @@
+<h4>Login Now !</h4>
+<div class="container">
+    <table>
+        <tr>
+            <td>User Name</td>
+            <td><input type="text" name="userName" [(ngModel)]="user.userName"></td>
+            <td>
+                <div *ngIf='isValid' class="alert alert-warning">{{message}}</div>
+            </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password" [(ngModel)]="user.password" (keyup.enter)="checkLogin()"></td>
+        </tr>
+        <tr>
+            <td><button class="btn btn-success" (click)="checkLogin()">Login</button></td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,14 @@
+net\web\app\senior\beans\OrderBean.class
+net\web\app\senior\beans\OrderItemBean.class
+net\web\app\senior\beans\AreaBean.class
+net\web\app\senior\beans\CategoryBean.class
+net\web\app\senior\beans\AdminUserBean.class
+net\web\app\senior\beans\CityBean.class
+net\web\app\senior\beans\ConsumerBean.class
+net\web\app\senior\beans\ProductBean.class
+net\web\app\senior\beans\ConsumerAddressBean.class
+net\web\app\senior\beans\DeliveryAreaBean.class
+net\web\app\senior\beans\ProviderBean.class
+net\web\app\senior\beans\ProviderUsersBean.class
+net\web\app\senior\beans\BranchBean.class
+net\web\app\senior\constant\SeniorConstant.class

@@ -1,0 +1,21 @@
+<div style="margin-left: 10px;">
+    <h2 class="font-weight-bold">Update Provider</h2>
+</div>
+<div class="container">
+    <fieldset class="form-groub">
+        <label>Provider Name in Arabic</label>
+        <input class="form-control" type="text" [(ngModel)]="provider.nameAr" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>Provider Name in English</label>
+        <input class="form-control" type="text" [(ngModel)]="provider.nameEn" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>Provider Hotline</label>
+        <input class="form-control" type="text" [(ngModel)]="provider.hotline" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <button style="margin: 10px;" class="btn btn-primary" (click)="updateProvider()">Update</button>
+        <button class="btn btn-warning" (click)="back()">Back</button>
+    </fieldset>
+</div>

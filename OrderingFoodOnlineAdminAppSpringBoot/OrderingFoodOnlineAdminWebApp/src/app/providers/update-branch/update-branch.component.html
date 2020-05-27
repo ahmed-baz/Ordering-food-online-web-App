@@ -1,0 +1,38 @@
+<div style="margin-left: 10px;">
+    <h2 class="font-weight-bold">Update branch</h2>
+</div>
+<div class="container">
+    <fieldset class="form-groub">
+        <label>Branch Name in Arabic</label>
+        <input class="form-control" type="text" [(ngModel)]="branch.nameAr" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>Branch Name in English</label>
+        <input class="form-control" type="text" [(ngModel)]="branch.nameEn" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>Branch Phone Number</label>
+        <input class="form-control" type="text" [(ngModel)]="branch.phone" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>Open At</label>
+        <input class="form-control" type="datetime-local" [ngModel]="branch.openAt |  date: 'dd/MM/yyyy - hh:mm' "
+            (ngModelChange)="branch.openAt=$event" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>Close AT</label>
+        <input class="form-control" type="datetime-local" [ngModel]="branch.closeAt |  date: 'dd/MM/yyyy - hh:mm' "
+            (ngModelChange)="branch.closeAt=$event" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>Area</label>
+        <ng-select [items]="areaList" bindLabel="name" [(ngModel)]="selectedAreaItem">
+        </ng-select>
+    </fieldset>
+
+
+    <fieldset class="form-groub">
+        <button style="margin: 10px;" class="btn btn-primary" (click)="updatebranch()">Update</button>
+        <button class="btn btn-warning" (click)="back()">Back</button>
+    </fieldset>
+</div>
