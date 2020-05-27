@@ -6,7 +6,7 @@ Application for ordering food online like otlob.
 3- Admin app: web app.<br/>
 ### Technologies & Tools used:
 #### the commin technologies:
-Java SE,OOP,MySql DB,Spring Data and Hibernate.
+Java SE,OOP,MySql DB,Spring Data and Hibernate.<br/>
 there is more than one presentation.<br/>
 1- Admin web app using Servlets,JSP,Spring Web MVC,HTML,CSS and jQuery.<br/>
 2- Admin web app using Spring Data,Spring Boot,Spring RESTful API,PostgreSQL and Angular.
