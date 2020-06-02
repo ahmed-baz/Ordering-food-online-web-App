@@ -1,15 +1,21 @@
 package net.web.app.senior.bll.transformer;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.web.app.senior.beans.AreaBean;
 import net.web.app.senior.beans.BranchBean;
 import net.web.app.senior.beans.DeliveryAreaBean;
+import net.web.app.senior.bll.manager.impl.ProviderManagerImpl;
 import net.web.app.senior.constant.SeniorConstant;
 import net.web.app.senior.dal.entity.AreaEntity;
 import net.web.app.senior.dal.entity.BranchEntity;
 import net.web.app.senior.dal.entity.DeliveryAreaEntity;
-import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +24,8 @@ public class BranchTransformer implements SeniorConstant, GeneralTransformer<Bra
 
     @Autowired
     private DeliveryAreaTransformer deliveryAreaTransformer;
+    @Autowired
+    private ProviderTransformer providerTransformer;
     @Autowired
     private AreaTransformer areaTransformer;
 
@@ -31,8 +39,30 @@ public class BranchTransformer implements SeniorConstant, GeneralTransformer<Bra
 
     @Override
     public BranchEntity fromBeanToEntity(BranchBean bean) {
-        BranchEntity entity = new DozerBeanMapper().map(bean, BranchEntity.class);
+        Date openAt = new Date();
+        Date closeAt = new Date();
+        try {
+            openAt = new SimpleDateFormat("hh:mm:ss a").parse(bean.getOpenAt());
+            closeAt = new SimpleDateFormat("hh:mm:ss a").parse(bean.getCloseAt());
+        } catch (ParseException ex) {
+            System.out.println(" ........ Can't parse date ........ ");
+        }
+        BranchEntity entity = new BranchEntity();
+        entity.setId(bean.getId());
+        entity.setNameAr(bean.getNameAr());
+        entity.setNameEn(bean.getNameEn());
+        entity.setPhone(bean.getPhone());
+        entity.setLat(bean.getLat());
+        entity.setLng(bean.getLng());
+        entity.setOpenAt(openAt);
+        entity.setCloseAt(closeAt);
+        entity.setArea(areaTransformer.fromBeanToEntity(bean.getArea()));
+        entity.setProvider(providerTransformer.fromBeanToEntity(bean.getProvider()));
         return entity;
+    }
+
+    public void setProviderTransformer(ProviderTransformer providerTransformer) {
+        this.providerTransformer = providerTransformer;
     }
 
     public BranchEntity fromBeanToEntityWithDeliveryAreas(BranchBean bean) {
@@ -49,16 +79,24 @@ public class BranchTransformer implements SeniorConstant, GeneralTransformer<Bra
 
     @Override
     public BranchBean fromEntityToBean(BranchEntity entity, String lang) {
-        BranchBean bean = new DozerBeanMapper().map(entity, BranchBean.class);
+        DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss a");
+        BranchBean bean = new BranchBean();
+        bean.setId(entity.getId());
+        bean.setNameAr(entity.getNameAr());
+        bean.setNameEn(entity.getNameEn());
+        bean.setOpenAt(dateFormat.format(entity.getOpenAt()));
+        bean.setCloseAt(dateFormat.format(entity.getCloseAt()));
+        bean.setPhone(entity.getPhone());
+        bean.setLat(entity.getLat());
+        bean.setLng(entity.getLng());
+        bean.setArea(areaTransformer.fromEntityToBean(entity.getArea(), lang));
+        bean.setProvider(providerTransformer.fromEntityToBean(entity.getProvider(), lang));
         return bean;
     }
 
-    public BranchBean fromEntityToBeanWithDeliveryAreas(BranchEntity entity, String lang) {
+    public BranchBean fromEntityToBeanWithDetails(BranchEntity entity, String lang) {
         BranchBean bean = fromEntityToBean(entity, lang);
         Set<DeliveryAreaEntity> deliveryAreas = entity.getDeliveryAreas();
-        AreaEntity area = entity.getArea();
-        AreaBean areaBean = areaTransformer.fromEntityToBeanWithCity(area, lang);
-        bean.setArea(areaBean);
         Set<DeliveryAreaBean> deliveryAreasBeans = new HashSet<>();
         for (DeliveryAreaEntity deliveryArea : deliveryAreas) {
             DeliveryAreaBean deliveryAreaBean = deliveryAreaTransformer.fromEntityToBean(deliveryArea, lang);

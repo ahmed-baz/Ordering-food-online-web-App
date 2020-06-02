@@ -21,7 +21,6 @@
                     <th>Hotline</th>
                     <th>View Branches</th>
                     <th>View Categories</th>
-                    <th>View Users</th>
                     <td>Update</td>
                     <td>Delete</td>
                 </tr>
@@ -35,7 +34,6 @@
                     <td>{{iProvider.hotline}}</td>
                     <td><button class="btn btn-info" (click)="viewBranches(iProvider.id)">Branches</button></td>
                     <td><button class="btn btn-info" (click)="viewCategories(iProvider.id)">Categories</button></td>
-                    <td><button class="btn btn-info" (click)="viewUsers(iProvider.id)">Users</button></td>
                     <td><button class="btn btn-primary" (click)="updateProvider(iProvider.id)">update</button></td>
                     <td><button class="btn btn-danger" (click)="removeProvider(iProvider.id)">Delete</button></td>
                 </tr>

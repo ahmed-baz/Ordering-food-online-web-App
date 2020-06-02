@@ -1,5 +1,6 @@
 net\web\app\senior\bll\transformer\BranchTransformer.class
 net\web\app\senior\bll\transformer\CategoryTransformer.class
+net\web\app\senior\bll\transformer\OrderTransformer.class
 net\web\app\senior\bll\TestSeniorBLGateWay.class
 net\web\app\senior\bll\manager\impl\AdminTasksManagerImpl.class
 net\web\app\senior\bll\manager\OrderManager.class

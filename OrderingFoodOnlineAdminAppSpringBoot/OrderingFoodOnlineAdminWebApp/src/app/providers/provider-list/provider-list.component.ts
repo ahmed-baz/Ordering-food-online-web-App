@@ -34,9 +34,6 @@ export class ProviderListComponent implements OnInit {
   viewBranches(id) {
     this.router.navigate(['branchList', id])
   }
-  viewUsers(id) {
-    this.router.navigate(['providerUserList', id])
-  }
   viewCategories(id) {
     this.router.navigate(['categoryList', id])
 

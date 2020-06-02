@@ -1,11 +1,11 @@
 package net.web.app.senior.controllers;
 
-
 import java.util.List;
 import net.web.app.senior.beans.ProviderBean;
 import net.web.app.senior.beans.ProviderUsersBean;
 import net.web.app.senior.beans.BranchBean;
 import net.web.app.senior.beans.CategoryBean;
+import net.web.app.senior.beans.DeliveryAreaBean;
 import net.web.app.senior.bll.SeniorBLGateWay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -34,6 +34,11 @@ public class ProviderManager {
     @GetMapping("findProviderById")
     public ProviderBean findProviderById(@RequestParam Integer id) {
         return gateWay.findProviderById(id);
+    }
+
+    @GetMapping("findProviderWithDetailsById")
+    public ProviderBean findProviderWithDetailsById(@RequestParam Integer id) {
+        return gateWay.findProviderWithDetailsById(id);
     }
 
     @PostMapping("addProvider")
@@ -66,6 +71,11 @@ public class ProviderManager {
         return gateWay.findCategoryById(id);
     }
 
+    @GetMapping("findCategoryWithDetailsById")
+    public CategoryBean findCategoryWithDetailsById(@RequestParam Integer id) {
+        return gateWay.findCategoryWithDetailsById(id);
+    }
+
     @PostMapping("addCategory")
     public CategoryBean addCategory(@RequestBody CategoryBean bean) {
         return gateWay.addCategory(bean);
@@ -96,6 +106,11 @@ public class ProviderManager {
         return gateWay.findBranchById(id);
     }
 
+    @GetMapping("findBranchWithDetailsById")
+    public BranchBean findBranchWithDetailsById(@RequestParam Integer id) {
+        return gateWay.findBranchWithDetailsById(id);
+    }
+
     @PostMapping("addBranch")
     public BranchBean addBranch(@RequestBody BranchBean bean) {
         return gateWay.addBranch(bean);
@@ -121,6 +136,11 @@ public class ProviderManager {
         return gateWay.findProviderUserListByProviderId(id);
     }
 
+    @GetMapping("findProviderUserListByBranchId")
+    public List<ProviderUsersBean> findProviderUserListByBranchId(@RequestParam Integer id) {
+        return gateWay.findProviderUserListByBranchId(id);
+    }
+
     @GetMapping("findProviderUserById")
     public ProviderUsersBean findProviderUserById(@RequestParam Integer id) {
         return gateWay.findProviderUserById(id);
@@ -139,5 +159,40 @@ public class ProviderManager {
     @DeleteMapping("removeProviderUser")
     public void removeProviderUser(@RequestParam Integer id) {
         gateWay.removeProviderUser(id);
+    }
+
+    @GetMapping("findDeliveryAreaById")
+    public DeliveryAreaBean findDeliveryAreaById(@RequestParam Integer id) {
+        return gateWay.findDeliveryAreaById(id);
+    }
+
+    @GetMapping("findDeliveryAreaList")
+    public List<DeliveryAreaBean> findDeliveryAreaList() {
+        return gateWay.findDeliveryAreaList();
+    }
+
+    @GetMapping("findDeliveryAreaListByBranchId")
+    public List<DeliveryAreaBean> findDeliveryAreaListByBranchId(@RequestParam Integer id) {
+        return gateWay.findDeliveryAreaListByBranchId(id);
+    }
+
+    @GetMapping("findDeliveryAreaListByProviderId")
+    public List<DeliveryAreaBean> findDeliveryAreaListByProviderId(@RequestParam Integer id) {
+        return gateWay.findDeliveryAreaListByProviderId(id);
+    }
+
+    @PostMapping("addDeliveryArea")
+    public DeliveryAreaBean addDeliveryArea(@RequestBody DeliveryAreaBean bean) {
+        return gateWay.addDeliveryArea(bean);
+    }
+
+    @PutMapping("updateDeliveryArea")
+    public DeliveryAreaBean updateDeliveryArea(@RequestBody DeliveryAreaBean bean) {
+        return gateWay.updateDeliveryArea(bean);
+    }
+
+    @DeleteMapping("removeDeliveryArea")
+    public void removeDeliveryArea(@RequestParam Integer id) {
+        gateWay.removeDeliveryArea(id);
     }
 }

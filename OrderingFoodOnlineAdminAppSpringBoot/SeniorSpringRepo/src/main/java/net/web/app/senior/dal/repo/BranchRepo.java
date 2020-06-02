@@ -8,4 +8,6 @@ public interface BranchRepo extends CommonRepo<BranchEntity> {
     public List<BranchEntity> searchByName(String keyword);
 
     public List<BranchEntity> findBranchListByProviderId(Integer id);
+
+    public List<BranchEntity> findBranchListByAreaId(Integer id);
 }

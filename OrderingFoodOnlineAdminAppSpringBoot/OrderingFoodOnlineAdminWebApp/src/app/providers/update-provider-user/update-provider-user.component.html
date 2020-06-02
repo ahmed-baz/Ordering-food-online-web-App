@@ -1,0 +1,27 @@
+<div style="margin-left: 10px;">
+    <h2 class="font-weight-bold" style="margin:15px ;">Update <span style="color: blue;">
+        </span> </h2>
+</div>
+<div class="container">
+    <fieldset class="form-groub">
+        <label>Provider</label>
+        <input class="form-control" type="text" [(ngModel)]="provider.nameEn" readonly>
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>Branch</label>
+        <ng-select [searchable]="true" [items]="branchList" bindLabel="nameEn" [(ngModel)]="selectedBranchItem">
+        </ng-select>
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>User Name</label>
+        <input class="form-control" type="text" [(ngModel)]="providerUser.username" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>Password</label>
+        <input class="form-control" type="password" [(ngModel)]="providerUser.password" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <button style="margin: 10px;" class="btn btn-primary" (click)="updateProviderUser()">Update</button>
+        <button class="btn btn-warning" (click)="back()">Back</button>
+    </fieldset>
+</div>

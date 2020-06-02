@@ -7,4 +7,6 @@ public interface ProviderUserRepo extends CommonRepo<ProviderUserEntity> {
 
     public List<ProviderUserEntity> findProviderUserListByProviderId(Integer id);
 
+    public List<ProviderUserEntity> findProviderUserListByBranchId(Integer id);
+
 }

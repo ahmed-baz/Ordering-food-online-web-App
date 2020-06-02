@@ -27,21 +27,26 @@ export class BranchListComponent implements OnInit {
   addBranch() {
     this.router.navigate(['new-branch', this.providerId])
   }
-  viewDeliveryArea(id) { }
-  viewUsers(id) { }
+  viewDeliveryArea(id) {
+    this.router.navigate(['deliveryAreaList', id])
+  }
+  viewUsers(id) {
+    this.router.navigate(['providerUserList', id])
+  }
   updateBranch(id) {
-    this.router.navigate(['update-branch', id])
+    this.router.navigate(['update-branch', this.providerId, id])
   }
   removeBranch(id) {
     this.providerManagerService.removeBranch(id).subscribe(
       response => {
-        this.refreshranchList();
+        this.refreshBranchList();
+        this.message = 'Branch removed successfully'
       }
     );
 
   }
   ngOnInit(): void {
-    this.refreshranchList();
+    this.refreshBranchList();
     this.providerManagerService.findProviderById(this.providerId).subscribe(
       data => {
         this.provider = data
@@ -49,7 +54,7 @@ export class BranchListComponent implements OnInit {
     );
   }
 
-  refreshranchList() {
+  refreshBranchList() {
     this.providerId = this.route.snapshot.params['providerId'];
     this.providerManagerService.findBranchListByProviderId(this.providerId).subscribe(
       data => {

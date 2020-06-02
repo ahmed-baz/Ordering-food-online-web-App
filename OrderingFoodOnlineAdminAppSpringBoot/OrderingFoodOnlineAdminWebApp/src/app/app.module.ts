@@ -29,6 +29,13 @@ import { AddBranchComponent } from './providers/add-branch/add-branch.component'
 import { BranchListComponent } from './providers/branch-list/branch-list.component';
 import { CategoryListComponent } from './providers/category-list/category-list.component';
 import { ProviderUserListComponent } from './providers/provider-user-list/provider-user-list.component';
+import { DeliveryAreaListComponent } from './providers/delivery-area-list/delivery-area-list.component';
+import { AddDeliveryAreaComponent } from './providers/add-delivery-area/add-delivery-area.component';
+import { UpdateDeliveryAreaComponent } from './providers/update-delivery-area/update-delivery-area.component';
+import { UpdateCategoryComponent } from './providers/update-category/update-category.component';
+import { UpdateProviderUserComponent } from './providers/update-provider-user/update-provider-user.component';
+import { AddProviderUserComponent } from './providers/add-provider-user/add-provider-user.component';
+import { AddCategoryComponent } from './providers/add-category/add-category.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +59,14 @@ import { ProviderUserListComponent } from './providers/provider-user-list/provid
     AddBranchComponent,
     BranchListComponent,
     CategoryListComponent,
-    ProviderUserListComponent
+    ProviderUserListComponent,
+    DeliveryAreaListComponent,
+    AddDeliveryAreaComponent,
+    UpdateDeliveryAreaComponent,
+    UpdateCategoryComponent,
+    UpdateProviderUserComponent,
+    AddProviderUserComponent,
+    AddCategoryComponent
   ],
   imports: [
     BrowserModule,

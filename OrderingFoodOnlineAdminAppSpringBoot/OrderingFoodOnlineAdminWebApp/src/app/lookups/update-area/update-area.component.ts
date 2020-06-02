@@ -23,7 +23,7 @@ export class UpdateAreaComponent implements OnInit {
 
 
   updateArea() {
-    this.area.city = this.city
+    this.area.cityBean = this.city
     this.lookupsManagerService.updateArea(this.area).subscribe(
       response => {
         this.router.navigate(['areaList', this.cityId])

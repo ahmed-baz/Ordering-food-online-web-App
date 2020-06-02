@@ -6,7 +6,6 @@
 package net.web.app.senior.beans;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -68,19 +67,19 @@ public class BranchBean {
         this.nameEn = nameEn;
     }
 
-    public Date getOpenAt() {
+    public String getOpenAt() {
         return openAt;
     }
 
-    public void setOpenAt(Date openAt) {
+    public void setOpenAt(String openAt) {
         this.openAt = openAt;
     }
 
-    public Date getCloseAt() {
+    public String getCloseAt() {
         return closeAt;
     }
 
-    public void setCloseAt(Date closeAt) {
+    public void setCloseAt(String closeAt) {
         this.closeAt = closeAt;
     }
 
@@ -134,8 +133,8 @@ public class BranchBean {
     private String name;
     private String nameAr;
     private String nameEn;
-    private Date openAt;
-    private Date closeAt;
+    private String openAt;
+    private String closeAt;
     private String phone;
     private BigDecimal lat;
     private BigDecimal lng;

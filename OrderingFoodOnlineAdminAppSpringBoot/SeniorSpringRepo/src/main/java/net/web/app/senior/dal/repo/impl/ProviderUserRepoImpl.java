@@ -33,4 +33,19 @@ public class ProviderUserRepoImpl extends AbstractEntityRepo<ProviderUserEntity>
         return provideruserResultList;
     }
 
+    @Override
+    public List<ProviderUserEntity> findProviderUserListByBranchId(Integer id) {
+        CriteriaBuilder criteriaBuilder = getCurrentSession().getCriteriaBuilder();
+        CriteriaQuery<ProviderUserEntity> providerUserCirteriaQuery = criteriaBuilder.createQuery(ProviderUserEntity.class);
+        Root<ProviderUserEntity> provideruserRoot = providerUserCirteriaQuery.from(ProviderUserEntity.class);
+        providerUserCirteriaQuery.select(provideruserRoot);
+        Predicate[] likeConditions = new Predicate[1];
+        likeConditions[0] = criteriaBuilder.equal(provideruserRoot.get("branch").get("id"), id);
+        providerUserCirteriaQuery.where(criteriaBuilder.or(likeConditions));
+        providerUserCirteriaQuery.orderBy(criteriaBuilder.asc(provideruserRoot.get("username")));
+        Query<ProviderUserEntity> providerUserQuery = getCurrentSession().createQuery(providerUserCirteriaQuery);
+        List<ProviderUserEntity> provideruserResultList = providerUserQuery.getResultList();
+        return provideruserResultList;
+    }
+
 }

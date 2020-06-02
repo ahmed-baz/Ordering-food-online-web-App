@@ -13,7 +13,7 @@ export class AreaBean {
     public name: string;
     public nameAr: string;
     public nameEn: string;
-    public city: CityBean;
+    public cityBean: CityBean;
     constructor() { };
 }
 

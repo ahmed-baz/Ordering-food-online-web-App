@@ -12,14 +12,14 @@ export class AuthenticationManagerService {
     private http: HttpClient,
   ) { }
 
-  checkLogin(user) {
-    let headers = this.getHttpHeaders();
-    return this.http.get<Boolean>('http://127.0.0.1:8081/checkLogin', user);
+  checkLogin(appUser) {
+    //let headers = this.getHttpHeaders();
+    return this.http.get<Boolean>(`http://127.0.0.1:8081/checkLogin`, appUser);
   }
 
   isUserLoggedIn() {
-    let user = sessionStorage.getItem('authenticateUser');
-    return !(user === null)
+    //let user = sessionStorage.getItem('authenticateUser');
+    //return !(user === null)
   }
 
   logout() {

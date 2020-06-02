@@ -37,7 +37,7 @@ public class LookupsManagerImpl implements LookupsManager, SeniorConstant {
         List<CityBean> cityBeanList = new ArrayList<>();
         List<CityEntity> cityEntityList = cityRepo.findList();
         for (CityEntity cityEntity : cityEntityList) {
-            CityBean fromEntityToBean = cityTransformer.fromEntityToBeanWithAreas(cityEntity, LANG_EN);
+            CityBean fromEntityToBean = cityTransformer.fromEntityToBean(cityEntity, LANG_EN);
             cityBeanList.add(fromEntityToBean);
         }
         return cityBeanList;
@@ -45,6 +45,13 @@ public class LookupsManagerImpl implements LookupsManager, SeniorConstant {
 
     @Override
     public CityBean findCityById(Integer id) {
+        CityEntity cityEntity = cityRepo.findById(id);
+        CityBean cityBean = cityTransformer.fromEntityToBean(cityEntity, LANG_EN);
+        return cityBean;
+    }
+
+    @Override
+    public CityBean findCityWithDetailsById(Integer id) {
         CityEntity cityEntity = cityRepo.findById(id);
         CityBean cityBean = cityTransformer.fromEntityToBeanWithAreas(cityEntity, LANG_EN);
         return cityBean;
@@ -97,14 +104,21 @@ public class LookupsManagerImpl implements LookupsManager, SeniorConstant {
     public AreaBean updateArea(AreaBean areaBean) {
         AreaEntity areaEntity = areaTransformer.fromBeanToEntity(areaBean);
         AreaEntity addedAreaEntity = areaRepo.update(areaEntity);
-        AreaBean resultAreaBean = areaTransformer.fromEntityToBeanWithCity(addedAreaEntity, LANG_EN);
+        AreaBean resultAreaBean = areaTransformer.fromEntityToBean(addedAreaEntity, LANG_EN);
         return resultAreaBean;
     }
 
     @Override
     public AreaBean findAreaById(Integer id) {
         AreaEntity areaEntity = areaRepo.findById(id);
-        AreaBean areaBean = areaTransformer.fromEntityToBeanWithCity(areaEntity, LANG_EN);
+        AreaBean areaBean = areaTransformer.fromEntityToBean(areaEntity, LANG_EN);
+        return areaBean;
+    }
+
+    @Override
+    public AreaBean findAreaWithDetailsById(Integer id) {
+        AreaEntity areaEntity = areaRepo.findById(id);
+        AreaBean areaBean = areaTransformer.fromEntityToBeanWithDetails(areaEntity, LANG_EN);
         return areaBean;
     }
 
@@ -121,14 +135,14 @@ public class LookupsManagerImpl implements LookupsManager, SeniorConstant {
         List<AreaEntity> areaEntityList = new ArrayList();
         List<AreaBean> areaBeanList = new ArrayList();
         areaList.forEach(bean -> areaEntityList.add(areaTransformer.fromBeanToEntity(bean)));
-        areaRepo.addList(areaEntityList).forEach(entity -> areaBeanList.add(areaTransformer.fromEntityToBeanWithCity(entity, LANG_AR)));
+        areaRepo.addList(areaEntityList).forEach(entity -> areaBeanList.add(areaTransformer.fromEntityToBean(entity, LANG_AR)));
         return areaList;
     }
 
     @Override
     public List<AreaBean> findAreaList() {
         List<AreaBean> areaBeanList = new ArrayList();
-        areaRepo.findList().forEach(entity -> areaBeanList.add(areaTransformer.fromEntityToBeanWithCity(entity, LANG_AR)));
+        areaRepo.findList().forEach(entity -> areaBeanList.add(areaTransformer.fromEntityToBean(entity, LANG_AR)));
         return areaBeanList;
     }
 
@@ -163,7 +177,7 @@ public class LookupsManagerImpl implements LookupsManager, SeniorConstant {
     @Override
     public List<AreaBean> findAreaListByCityId(Integer id) {
         List<AreaBean> areaBeanList = new ArrayList();
-        areaRepo.findAreaListByCityId(id).forEach(entity -> areaBeanList.add(areaTransformer.fromEntityToBeanWithCity(entity, LANG_AR)));
+        areaRepo.findAreaListByCityId(id).forEach(entity -> areaBeanList.add(areaTransformer.fromEntityToBean(entity, LANG_AR)));
         return areaBeanList;
     }
 

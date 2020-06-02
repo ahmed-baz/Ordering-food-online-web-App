@@ -10,7 +10,7 @@ import { LookupsManagerService } from 'src/app/service/lookups/lookups-manager.s
 })
 export class AddAreaComponent implements OnInit {
 
-  city: CityBean = new CityBean();
+  cityBean: CityBean = new CityBean();
   area: AreaBean = new AreaBean();
   private cityId: number = 0;
 
@@ -32,14 +32,14 @@ export class AddAreaComponent implements OnInit {
     this.router.navigate(['areaList', this.cityId]);
   }
   ngOnInit(): void {
-    this.area.city = new CityBean();
+    this.area.cityBean = new CityBean();
     this.area.nameAr = ''
     this.area.nameEn = ''
 
     this.cityId = this.route.snapshot.params['id'];
     this.lookupsManagerService.findCityById(this.cityId).subscribe(
       data => {
-        this.area.city = data
+        this.area.cityBean = data
       }
     );
   }

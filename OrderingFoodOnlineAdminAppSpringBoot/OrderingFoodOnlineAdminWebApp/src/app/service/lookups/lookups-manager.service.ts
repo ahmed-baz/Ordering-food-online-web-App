@@ -12,75 +12,62 @@ export class LookupsManagerService {
   ) { }
 
   findCityList() {
-    let headers = this.getHttpHeaders();
-    return this.http.get<CityBean[]>('https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Lookups/findCityList')
+    return this.http.get<CityBean[]>('http://127.0.0.1:8081/Lookups/findCityList')
   }
+
   findAreaList() {
-    let headers = this.getHttpHeaders();
-    return this.http.get<AreaBean[]>('https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Lookups/findAreaList')
+    return this.http.get<AreaBean[]>('http://127.0.0.1:8081/Lookups/findAreaList')
   }
 
   findAreaListByCityId(id) {
-    let headers = this.getHttpHeaders();
-    return this.http.get<AreaBean[]>('https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Lookups/findAreaListByCityId?id=' + id)
-  }
-  removeCityById(id) {
-    let headers = this.getHttpHeaders();
-    return this.http.delete(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Lookups/removeCity?id=` + id)
-  }
-
-  removeAreaById(id) {
-    let headers = this.getHttpHeaders();
-    return this.http.delete(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Lookups/removeArea?id=` + id)
+    return this.http.get<AreaBean[]>('http://127.0.0.1:8081/Lookups/findAreaListByCityId?id=' + id)
   }
 
   findCityById(id) {
-    let headers = this.getHttpHeaders();
-    return this.http.get<CityBean>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Lookups/findCityById?id=` + id)
+    return this.http.get<CityBean>(`http://127.0.0.1:8081/Lookups/findCityById?id=` + id)
+  }
+
+  findCityWithDetailsById(id) {
+    return this.http.get<CityBean>(`http://127.0.0.1:8081/Lookups/findCityWithDetailsById?id=` + id)
   }
 
   findAreaById(id) {
-    let headers = this.getHttpHeaders();
-    return this.http.get<AreaBean>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Lookups/findAreaById?id=` + id)
+    return this.http.get<AreaBean>(`http://127.0.0.1:8081/Lookups/findAreaById?id=` + id)
   }
+
+  findAreaWithDetailsById(id) {
+    return this.http.get<AreaBean>(`http://127.0.0.1:8081/Lookups/findAreaWithDetailsById?id=` + id)
+  }
+
+
 
   addNewCity(city) {
-    let headers = this.getHttpHeaders();
-    return this.http.post<CityBean>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Lookups/addCity`, city)
+    
+    return this.http.post<CityBean>(`http://127.0.0.1:8081/Lookups/addCity`, city)
   }
-
-  updateCity(city) {
-    let headers = this.getHttpHeaders();
-    return this.http.put<CityBean>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Lookups/updateCity`, city)
-  }
-
 
   addNewArea(area) {
-    let headers = this.getHttpHeaders();
-    return this.http.post<AreaBean>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Lookups/addArea`, area)
+    
+    return this.http.post<AreaBean>(`http://127.0.0.1:8081/Lookups/addArea`, area)
   }
 
-  updateArea(area) {
-    let headers = this.getHttpHeaders();
-    return this.http.put<AreaBean>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Lookups/updateArea`, area)
+
+  updateCity(city) {
+    
+    return this.http.put<CityBean>(`http://127.0.0.1:8081/Lookups/updateCity`, city)
   }
 
-  createBasicAuthenticationHttpHeader() {
-    let username = 'root';
-    let password = 'root';
-    let basicAuthenticationHttpHeaderString = 'Basic ' + window.btoa(username + ':' + password);
-    return basicAuthenticationHttpHeaderString;
+  updateArea(area) { 
+    return this.http.put<AreaBean>(`http://127.0.0.1:8081/Lookups/updateArea`, area)
   }
 
-  getHttpHeaders() {
-    let basicAuthenticationHttpHeaderString = this.createBasicAuthenticationHttpHeader();
-    let headers = new HttpHeaders(
-      {
-        Authorization: basicAuthenticationHttpHeaderString
-      }
-    );
-    return headers;
+
+  removeCityById(id) {
+    return this.http.delete(`http://127.0.0.1:8081/Lookups/removeCity?id=` + id)
   }
 
+  removeAreaById(id) {
+    return this.http.delete(`http://127.0.0.1:8081/Lookups/removeArea?id=` + id)
+  }
 
 }

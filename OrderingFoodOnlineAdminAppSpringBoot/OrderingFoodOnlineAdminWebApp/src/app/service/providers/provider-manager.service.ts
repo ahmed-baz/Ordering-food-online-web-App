@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ProviderBean, BranchBean } from 'src/app/providers/ProviderBeans';
+import { ProviderBean, BranchBean, DeliveryAreaBean, providerUsersBean, CategoryBean } from 'src/app/providers/ProviderBeans';
 
 @Injectable({
   providedIn: 'root'
@@ -12,70 +12,122 @@ export class ProviderManagerService {
   ) { }
 
   findProviderList() {
-    let headers = this.getHttpHeaders();
-    return this.http.get<ProviderBean[]>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Provider/findProviderList`)
+    //https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/
+    return this.http.get<ProviderBean[]>(`http://127.0.0.1:8081/Provider/findProviderList`)
   }
 
   findProviderById(id) {
-    let headers = this.getHttpHeaders();
-    return this.http.get<ProviderBean>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Provider/findProviderById?id=` + id)
+    return this.http.get<ProviderBean>(`http://127.0.0.1:8081/Provider/findProviderById?id=` + id)
   }
 
-  updateProvider(provider) {
-    let headers = this.getHttpHeaders();
-    return this.http.put<ProviderBean>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Provider/updateProvider`, provider)
+  findProviderWithDetailsById(id) {
+    return this.http.get<ProviderBean>(`http://127.0.0.1:8081/Provider/findProviderWithDetailsById?id=` + id)
   }
 
-  addProvider(provider) {
-    let headers = this.getHttpHeaders();
-    return this.http.post<ProviderBean>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Provider/addProvider`, provider)
+  findDeliveryAreaId(id) {
+    return this.http.get<DeliveryAreaBean>(`http://127.0.0.1:8081/Provider/findDeliveryAreaById?id=` + id)
   }
-  removeProvider(id) {
-    let headers = this.getHttpHeaders();
-    return this.http.delete(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Provider/removeProvider?id=` + id)
+
+  findDeliveryAreaListByBranchId(id) {
+    return this.http.get<DeliveryAreaBean[]>(`http://127.0.0.1:8081/Provider/findDeliveryAreaListByBranchId?id=` + id)
   }
 
   findBranchListByProviderId(id) {
-    let headers = this.getHttpHeaders();
-    return this.http.get<BranchBean[]>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Provider/findBranchListByProviderId?id=` + id)
+    return this.http.get<BranchBean[]>(`http://127.0.0.1:8081/Provider/findBranchListByProviderId?id=` + id)
   }
 
   findBranchById(id) {
-    let headers = this.getHttpHeaders();
-    return this.http.get<BranchBean>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Provider/findBranchById?id=` + id)
+    return this.http.get<BranchBean>(`http://127.0.0.1:8081/Provider/findBranchById?id=` + id)
+  }
+
+  findBranchWithDetailsById(id) {
+    return this.http.get<BranchBean>(`http://127.0.0.1:8081/Provider/findBranchWithDetailsById?id=` + id)
+  }
+
+  findProviderUserListByBranchId(id) {
+    return this.http.get<providerUsersBean[]>(`http://127.0.0.1:8081/Provider/findProviderUserListByBranchId?id=` + id)
+  }
+
+  findProviderUserById(id) {
+    return this.http.get<providerUsersBean>(`http://127.0.0.1:8081/Provider/findProviderUserById?id=` + id)
+  }
+
+  findCategoryList() {
+    return this.http.get<CategoryBean[]>(`http://127.0.0.1:8081/Provider/findCategoryList`)
+  }
+
+  findCategoryListByProviderId(id) {
+    return this.http.get<CategoryBean[]>(`http://127.0.0.1:8081/Provider/findCategoryListByProviderId?id=` + id)
+  }
+
+  findCategoryById(id) {
+    return this.http.get<CategoryBean>(`http://127.0.0.1:8081/Provider/findCategoryById?id=` + id)
+  }
+
+
+
+
+  addDeliveryArea(deliveryArea) {
+    return this.http.post<DeliveryAreaBean>(`http://127.0.0.1:8081/Provider/addDeliveryArea`, deliveryArea)
+  }
+
+  addProvider(provider) {
+    return this.http.post<ProviderBean>(`http://127.0.0.1:8081/Provider/addProvider`, provider)
+  }
+
+  addProviderUser(providerUser) {
+    return this.http.post<providerUsersBean>(`http://127.0.0.1:8081/Provider/addProviderUser`, providerUser)
   }
 
   addBranch(branch) {
-    let headers = this.getHttpHeaders();
-    return this.http.post<BranchBean>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Provider/addBranch`, branch)
+    return this.http.post<BranchBean>(`http://127.0.0.1:8081/Provider/addBranch`, branch)
   }
+
+  addCategory(category) {
+    return this.http.post<CategoryBean>(`http://127.0.0.1:8081/Provider/addCategory`, category)
+  }
+
+
 
   updateBranch(branch) {
-    let headers = this.getHttpHeaders();
-    return this.http.put<BranchBean>(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Provider/updateBranch`, branch)
+    return this.http.put<BranchBean>(`http://127.0.0.1:8081/Provider/updateBranch`, branch)
   }
+
+  updateDeliveryArea(deliveryArea) {
+    return this.http.put<DeliveryAreaBean>(`http://127.0.0.1:8081/Provider/updateDeliveryArea`, deliveryArea)
+  }
+
+  updateProvider(provider) {
+    return this.http.put<ProviderBean>(`http://127.0.0.1:8081/Provider/updateProvider`, provider)
+  }
+
+  updateProviderUser(providerUser) {
+    return this.http.put<providerUsersBean>(`http://127.0.0.1:8081/Provider/updateProviderUser`, providerUser)
+  }
+
+  updateCategory(category) {
+    return this.http.put<CategoryBean>(`http://127.0.0.1:8081/Provider/updateCategory`, category)
+  }
+
+
+
   removeBranch(id) {
-    let headers = this.getHttpHeaders();
-    return this.http.delete(`https://orderingfoodonlineadminwebapp-busy-okapi-dk.cfapps.io/Provider/removeBranch?id=` + id);
+    return this.http.delete(`http://127.0.0.1:8081/Provider/removeBranch?id=` + id);
   }
 
-
-
-
-  createBasicAuthenticationHttpHeader() {
-    let username = 'root';
-    let password = 'root';
-    let basicAuthenticationHttpHeaderString = 'Basic ' + window.btoa(username + ':' + password);
-    return basicAuthenticationHttpHeaderString;
+  removeCategory(id) {
+    return this.http.delete(`http://127.0.0.1:8081/Provider/removeCategory?id=` + id);
   }
 
-  getHttpHeaders() {
-    let basicAuthenticationHttpHeaderString = this.createBasicAuthenticationHttpHeader();
-    let headers = new HttpHeaders(
-      {
-        Authorization: basicAuthenticationHttpHeaderString
-      }
-    );
-    return headers;
+  removeProvider(id) {
+    return this.http.delete(`http://127.0.0.1:8081/Provider/removeProvider?id=` + id)
+  }
+
+  removeProviderUser(id) {
+    return this.http.get<providerUsersBean[]>(`http://127.0.0.1:8081/Provider/removeProviderUser?id=` + id)
+  }
+
+  removeDeliveryArea(id) {
+    return this.http.delete(`http://127.0.0.1:8081/Provider/removeDeliveryArea?id=` + id)
   }
 }

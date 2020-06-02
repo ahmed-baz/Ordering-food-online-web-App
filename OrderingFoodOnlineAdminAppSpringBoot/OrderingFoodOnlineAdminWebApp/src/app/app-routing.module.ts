@@ -19,6 +19,11 @@ import { CategoryListComponent } from './providers/category-list/category-list.c
 import { ProviderUserListComponent } from './providers/provider-user-list/provider-user-list.component';
 import { AddBranchComponent } from './providers/add-branch/add-branch.component';
 import { UpdateBranchComponent } from './providers/update-branch/update-branch.component';
+import { DeliveryAreaListComponent } from './providers/delivery-area-list/delivery-area-list.component';
+import { AddDeliveryAreaComponent } from './providers/add-delivery-area/add-delivery-area.component';
+import { UpdateDeliveryAreaComponent } from './providers/update-delivery-area/update-delivery-area.component';
+import { AddProviderUserComponent } from './providers/add-provider-user/add-provider-user.component';
+import { UpdateProviderUserComponent } from './providers/update-provider-user/update-provider-user.component';
 
 
 const routes: Routes = [
@@ -36,9 +41,15 @@ const routes: Routes = [
   { path: "new-provider", component: AddProviderComponent },
   { path: "new-branch/:providerId", component: AddBranchComponent },
   { path: "branchList/:providerId", component: BranchListComponent },
-  { path: "update-branch/:branchId", component: UpdateBranchComponent },
+  { path: "update-branch/:providerId/:branchId", component: UpdateBranchComponent },
   { path: "categoryList/:providerId", component: CategoryListComponent },
-  { path: "providerUserList/:providerId", component: ProviderUserListComponent },
+  { path: "providerUserList/:branchId", component: ProviderUserListComponent },
+  { path: "deliveryAreaList/:branchId", component: DeliveryAreaListComponent },
+  { path: "new-deliveryArea/:branchId", component: AddDeliveryAreaComponent },
+  { path: "update-deliveryArea/:deliveryAreaId", component: UpdateDeliveryAreaComponent },
+  { path: "providerUserList/:branchId", component: ProviderUserListComponent },
+  { path: "new-providerUser/:providerId/:branchId", component: AddProviderUserComponent },
+  { path: "update-providerUser/:providerId/:providerUserId", component: UpdateProviderUserComponent },
   { path: "logout", component: LogoutComponent },
   { path: "**", component: ErrorComponent }
 ];

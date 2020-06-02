@@ -33,6 +33,11 @@ public class LookupsAdminManager {
         return gateWay.findCityById(Integer.parseInt(id));
     }
 
+    @GetMapping("findCityWithDetailsById")
+    public CityBean findCityWithDetailsById(@RequestParam String id) {
+        return gateWay.findCityWithDetailsById(Integer.parseInt(id));
+    }
+
     @PostMapping("addCity")
     public CityBean addCity(@RequestBody CityBean bean) {
         return gateWay.addCity(bean);
@@ -71,6 +76,11 @@ public class LookupsAdminManager {
     @GetMapping("findAreaById")
     public AreaBean findAreaById(@RequestParam Integer id) {
         return gateWay.findAreaById(id);
+    }
+
+    @GetMapping("findAreaWithDetailsById")
+    public AreaBean findAreaWithDetailsById(@RequestParam Integer id) {
+        return gateWay.findAreaWithDetailsById(id);
     }
 
     @PostMapping("addArea")

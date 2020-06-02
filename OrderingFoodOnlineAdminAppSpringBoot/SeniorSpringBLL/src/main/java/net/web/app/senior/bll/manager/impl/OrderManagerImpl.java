@@ -70,7 +70,7 @@ public class OrderManagerImpl implements OrderManager {
         List<BranchBean> branchBeanList = new ArrayList<>();
         List<BranchEntity> branchEntityList = branchRepo.findList();
         for (BranchEntity iEntity : branchEntityList) {
-            BranchBean bean = branchTransformer.fromEntityToBeanWithDeliveryAreas(iEntity, LANG_EN);
+            BranchBean bean = branchTransformer.fromEntityToBeanWithDetails(iEntity, LANG_EN);
             branchBeanList.add(bean);
         }
 
@@ -83,7 +83,7 @@ public class OrderManagerImpl implements OrderManager {
         List<BranchBean> branchBeanList = new ArrayList<>();
         List<BranchEntity> branchEntityList = branchRepo.searchByName(name);
         for (BranchEntity iEntity : branchEntityList) {
-            BranchBean bean = branchTransformer.fromEntityToBeanWithDeliveryAreas(iEntity, LANG_EN);
+            BranchBean bean = branchTransformer.fromEntityToBeanWithDetails(iEntity, LANG_EN);
             branchBeanList.add(bean);
         }
 

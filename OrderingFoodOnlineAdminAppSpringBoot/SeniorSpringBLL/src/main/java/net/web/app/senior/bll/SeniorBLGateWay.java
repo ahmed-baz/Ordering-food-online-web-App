@@ -1,10 +1,12 @@
 package net.web.app.senior.bll;
 
 import java.util.List;
+import net.web.app.senior.beans.AdminUserBean;
 import net.web.app.senior.beans.AreaBean;
 import net.web.app.senior.beans.BranchBean;
 import net.web.app.senior.beans.CategoryBean;
 import net.web.app.senior.beans.CityBean;
+import net.web.app.senior.beans.DeliveryAreaBean;
 import net.web.app.senior.beans.ProviderBean;
 import net.web.app.senior.beans.ProviderUsersBean;
 import net.web.app.senior.bll.manager.AuthenticationManager;
@@ -20,8 +22,95 @@ public class SeniorBLGateWay {
     @Autowired
     private LookupsManager lookupsManager;
 
+    public ProviderBean findProviderWithDetailsById(Integer id) {
+        return providerManager.findProviderWithDetailsById(id);
+    }
+
+    public BranchBean findBranchWithDetailsById(Integer id) {
+        return providerManager.findBranchWithDetailsById(id);
+    }
+
+    public CategoryBean findCategoryWithDetailsById(Integer id) {
+        return providerManager.findCategoryWithDetailsById(id);
+    }
+
+    public List<ProviderUsersBean> findProviderUserListByBranchId(Integer id) {
+        return providerManager.findProviderUserListByBranchId(id);
+    }
+
+    public AdminUserBean findAdminUserById(Integer id) {
+        return authenticationManager.findAdminUserById(id);
+    }
+
+    public List<AdminUserBean> findAdminUserList() {
+        return authenticationManager.findAdminUserList();
+    }
+
+    public AdminUserBean addNewAdminUser(AdminUserBean user) {
+        return authenticationManager.addNewAdminUser(user);
+    }
+
+    public AdminUserBean updateAdminUser(AdminUserBean user) {
+        return authenticationManager.updateAdminUser(user);
+    }
+
+    public AreaBean findAreaWithDetailsById(Integer id) {
+        return lookupsManager.findAreaWithDetailsById(id);
+    }
+
+    public void removeAdminUser(Integer id) {
+        authenticationManager.removeAdminUser(id);
+    }
+
+    public Boolean checkLogin(AdminUserBean user) {
+        return authenticationManager.checkLogin(user);
+    }
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private OrderManager orderManager;
+    @Autowired
+    private ProviderManager providerManager;
+
     public ProviderUsersBean findProviderUserById(Integer id) {
         return providerManager.findProviderUserById(id);
+    }
+
+    public List<BranchBean> findBranchListByAreaId(Integer id) {
+        return providerManager.findBranchListByAreaId(id);
+    }
+
+    public DeliveryAreaBean findDeliveryAreaById(Integer id) {
+        return providerManager.findDeliveryAreaById(id);
+    }
+
+    public List<DeliveryAreaBean> findDeliveryAreaList() {
+        return providerManager.findDeliveryAreaList();
+    }
+
+    public List<DeliveryAreaBean> findDeliveryAreaListByBranchId(Integer id) {
+        return providerManager.findDeliveryAreaListByBranchId(id);
+    }
+
+    public List<DeliveryAreaBean> findDeliveryAreaListByProviderId(Integer id) {
+        return providerManager.findDeliveryAreaListByProviderId(id);
+    }
+
+    public DeliveryAreaBean addDeliveryArea(DeliveryAreaBean bean) {
+        return providerManager.addDeliveryArea(bean);
+    }
+
+    public CityBean findCityWithDetailsById(Integer id) {
+        return lookupsManager.findCityWithDetailsById(id);
+    }
+
+    public DeliveryAreaBean updateDeliveryArea(DeliveryAreaBean bean) {
+        return providerManager.updateDeliveryArea(bean);
+    }
+
+    public void removeDeliveryArea(Integer id) {
+        providerManager.removeDeliveryArea(id);
     }
 
     public List<ProviderUsersBean> findProviderUserList() {
@@ -104,21 +193,8 @@ public class SeniorBLGateWay {
         return providerManager.addBranch(branch);
     }
 
-    @Autowired
-    private OrderManager orderManager;
-
-    @Autowired
-    private ProviderManager providerManager;
-
     public List<AreaBean> findAreaListByCityId(Integer id) {
         return lookupsManager.findAreaListByCityId(id);
-    }
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    public Boolean checkLogin(String userName, String password) {
-        return authenticationManager.checkLogin(userName, password);
     }
 
     public List<AreaBean> addAreaList(List<AreaBean> areaList) {

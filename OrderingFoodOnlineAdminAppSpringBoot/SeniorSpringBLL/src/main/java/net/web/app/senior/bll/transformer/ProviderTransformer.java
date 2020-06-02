@@ -11,7 +11,6 @@ import net.web.app.senior.dal.entity.BranchEntity;
 import net.web.app.senior.dal.entity.CategoryEntity;
 import net.web.app.senior.dal.entity.ProviderEntity;
 import net.web.app.senior.dal.entity.ProviderUserEntity;
-import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -43,8 +42,13 @@ public class ProviderTransformer implements SeniorConstant, GeneralTransformer<P
 
     @Override
     public ProviderBean fromEntityToBean(ProviderEntity entity, String lang) {
-        ProviderBean bean = new DozerBeanMapper().map(entity, ProviderBean.class);
-
+        ProviderBean bean = new ProviderBean();
+        bean.setId(entity.getId());
+        bean.setNameAr(entity.getNameAr());
+        bean.setNameEn(entity.getNameEn());
+        bean.setHotline(entity.getHotline());
+        bean.setLogoPathAr(entity.getLogoPathAr());
+        bean.setLogoPathEn(entity.getLogoPathEn());
         if (LANG_EN.equals(lang)) {
             bean.setName(entity.getNameEn());
             bean.setDefaultLogoPath(entity.getLogoPathEn());
@@ -56,7 +60,7 @@ public class ProviderTransformer implements SeniorConstant, GeneralTransformer<P
     }
 
     public ProviderBean fromEntityToBeanWithDetails(ProviderEntity entity, String lang) {
-        ProviderBean bean = new DozerBeanMapper().map(entity, ProviderBean.class);
+        ProviderBean bean = fromEntityToBean(entity, lang);
         Set<BranchEntity> branches = entity.getBranches();
         Set<CategoryEntity> categories = entity.getCategories();
         Set<ProviderUserEntity> providerUsers = entity.getProviderUsers();

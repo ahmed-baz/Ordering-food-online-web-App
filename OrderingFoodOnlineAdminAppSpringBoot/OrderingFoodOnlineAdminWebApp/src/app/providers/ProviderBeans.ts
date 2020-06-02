@@ -6,9 +6,9 @@ export class ProviderBean {
     public nameAr: string;
     public nameEn: string;
     public hotline: string;
-    public branchList: BranchBean[]
-    public categoryList: CategoryBean[]
-    public providerUserList: providerUsersBean[]
+    public branchesBean: BranchBean[];
+    public categoriesBean: CategoryBean[]
+    public providerUsersBean: providerUsersBean[]
     constructor(
     ) { }
 }
@@ -18,15 +18,15 @@ export class BranchBean {
     public name: string;
     public nameAr: string;
     public nameEn: string;
-    public openAt: Date
-    public closeAt: Date
+    public openAt: Date;
+    public closeAt: Date;
     public phone: string
     public lat: BigInteger
     public lng: BigInteger
-    public provider: ProviderBean
-    public area: AreaBean
-    public deliveryAreaList: DeliveryAreaBean[]
-    public userList: providerUsersBean[]
+    public provider: ProviderBean = new ProviderBean()
+    public area: AreaBean = new AreaBean()
+    public deliveryAreas: DeliveryAreaBean[]
+    public providerUsers: providerUsersBean[]
     constructor() { };
 }
 
@@ -38,17 +38,17 @@ export class CategoryBean {
     public description: string;
     public descriptionAr: string;
     public descriptionEn: string;
-    public provider: ProviderBean;
+    public provider: ProviderBean = new ProviderBean();
     public productList: productBean[];
     constructor() { };
 }
 
 export class providerUsersBean {
     public id: Number;
-    public userName: string;
+    public username: string;
     public password: string;
-    public provider: ProviderBean
-    public branch: BranchBean;
+    public provider: ProviderBean = new ProviderBean()
+    public branch: BranchBean = new BranchBean()
     constructor() { };
 }
 
@@ -61,7 +61,7 @@ export class productBean {
     public descriptionAr: string;
     public descriptionEn: string;
     public price: number;
-    public category: CategoryBean;
+    public category: CategoryBean = new CategoryBean();
 
     constructor() { };
 }
@@ -70,8 +70,8 @@ export class DeliveryAreaBean {
     public id: Number;
     public deliveryFees: number;
     public deliverInMinutes: number;
-    public branch: BranchBean;
-    public area: AreaBean;
+    public branchBean: BranchBean = new BranchBean();
+    public areaBean: AreaBean = new AreaBean();
 
     constructor() { };
 }

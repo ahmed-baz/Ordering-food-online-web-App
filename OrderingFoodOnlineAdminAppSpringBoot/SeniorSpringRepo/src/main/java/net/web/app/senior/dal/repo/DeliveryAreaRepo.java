@@ -5,12 +5,17 @@
  */
 package net.web.app.senior.dal.repo;
 
+import java.util.List;
 import net.web.app.senior.dal.entity.DeliveryAreaEntity;
 
 /**
  *
  * @author Ahmed Baz
  */
-public interface DeliveryAreaRepo extends CommonRepo<DeliveryAreaEntity>{
-    
+public interface DeliveryAreaRepo extends CommonRepo<DeliveryAreaEntity> {
+
+    public List<DeliveryAreaEntity> findDeliveryAreaListByBranchId(Integer id);
+
+    public List<DeliveryAreaEntity> findDeliveryAreaListByProviderId(Integer id);
+
 }

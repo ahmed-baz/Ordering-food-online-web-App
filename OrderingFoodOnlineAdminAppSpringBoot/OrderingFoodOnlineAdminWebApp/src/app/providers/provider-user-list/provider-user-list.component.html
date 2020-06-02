@@ -1,1 +1,35 @@
-<p>provider-user-list works!</p>
+<h2 class="font-weight-bold" style="margin:15px ;">Manage Provider User List of <span
+        style="color: blue;">{{provider.nameEn}}</span></h2>
+<div style="margin-left: 1100px;">
+    <button class="btn btn-success" (click)="addProviderUser()">Add New Provider User</button><button
+        style="margin-left: 5px;" class="btn btn-warning" (click)="back()">back</button>
+</div>
+<div style="margin:10px ;">
+    <div *ngIf='message' class="alert alert-success">{{message}}</div>
+    <div class="container">
+        <table width="40%" class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Id</th>
+                    <th>User Name</th>
+                    <th>Provider</th>
+                    <th>Branch</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let iUser of providerUserList;let i=index">
+                    <td>{{i+1}}</td>
+                    <td><a>{{iUser.id}}</a></td>
+                    <td>{{iUser.username}}</td>
+                    <td>{{iUser.provider.nameEn}}</td>
+                    <td>{{iUser.branch.nameEn}}</td>
+                    <td><button class="btn btn-primary" (click)="updateProviderUser(iUser.id)">update</button></td>
+                    <td><button class="btn btn-danger" (click)="removeProviderUser(iUser.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

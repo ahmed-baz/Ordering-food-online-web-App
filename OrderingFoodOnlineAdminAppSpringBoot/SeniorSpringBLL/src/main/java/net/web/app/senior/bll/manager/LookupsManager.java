@@ -18,6 +18,8 @@ public interface LookupsManager {
 
     public CityBean findCityById(Integer id);
 
+    public CityBean findCityWithDetailsById(Integer id);
+
     public List<CityBean> findCityList();
 
     public List<CityBean> searchCityByName(String keyword);
@@ -29,6 +31,8 @@ public interface LookupsManager {
     public AreaBean updateArea(AreaBean areaBean);
 
     public AreaBean findAreaById(Integer id);
+
+    public AreaBean findAreaWithDetailsById(Integer id);
 
     public List<AreaBean> findAreaList();
 

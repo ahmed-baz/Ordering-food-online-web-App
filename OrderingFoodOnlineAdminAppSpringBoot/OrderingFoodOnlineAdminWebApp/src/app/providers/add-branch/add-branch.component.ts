@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PipeTransform } from '@angular/core';
 
 import { BranchBean, ProviderBean } from '../ProviderBeans';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,6 +17,7 @@ export class AddBranchComponent implements OnInit {
   provider: ProviderBean = new ProviderBean()
   branch: BranchBean = new BranchBean()
   areaList: AreaBean[]
+  today: Date = new Date();
   selectedAreaItem: AreaBean
   constructor(
     private route: ActivatedRoute,
@@ -38,8 +39,6 @@ export class AddBranchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.branch.openAt = new Date()
-    console.log(this.branch.openAt)
     this.providerId = this.route.snapshot.params['providerId'];
     this.providerManagerService.findProviderById(this.providerId).subscribe(
       data => {

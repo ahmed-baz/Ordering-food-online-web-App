@@ -56,4 +56,19 @@ public class BranchRepoImpl extends AbstractEntityRepo<BranchEntity> implements 
         return branchResultList;
     }
 
+    @Override
+    public List<BranchEntity> findBranchListByAreaId(Integer id) {
+        CriteriaBuilder criteriaBuilder = getCurrentSession().getCriteriaBuilder();
+        CriteriaQuery<BranchEntity> branchCirteriaQuery = criteriaBuilder.createQuery(BranchEntity.class);
+        Root<BranchEntity> branchRoot = branchCirteriaQuery.from(BranchEntity.class);
+        branchCirteriaQuery.select(branchRoot);
+        Predicate[] likeConditions = new Predicate[1];
+        likeConditions[0] = criteriaBuilder.equal(branchRoot.get("area").get("id"), id);
+        branchCirteriaQuery.where(criteriaBuilder.or(likeConditions));
+        branchCirteriaQuery.orderBy(criteriaBuilder.asc(branchRoot.get("nameEn")));
+        Query<BranchEntity> branchQuery = getCurrentSession().createQuery(branchCirteriaQuery);
+        List<BranchEntity> branchResultList = branchQuery.getResultList();
+        return branchResultList;
+    }
+
 }

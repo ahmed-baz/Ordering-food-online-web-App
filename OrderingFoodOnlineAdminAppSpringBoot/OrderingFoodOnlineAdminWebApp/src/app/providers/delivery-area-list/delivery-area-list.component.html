@@ -1,0 +1,37 @@
+<h2 class="font-weight-bold" style="margin:15px ;">Manage Delivery Area List of <span
+        style="color: blue;">{{branch.provider.nameEn}} [</span> <span
+        style="color: chocolate; margin-left: 10px;">{{branch.nameEn}}</span><span  style="color: blue;"> ]</span>
+</h2>
+<div style="margin-left: 1100px;">
+    <button class="btn btn-success" (click)="addNewArea()">Add New Delivery Area</button><button
+        style="margin-left: 5px;" class="btn btn-warning" (click)="back()">back</button>
+</div>
+<div style="margin:10px ;">
+    <div *ngIf='message' class="alert alert-success">{{message}}</div>
+    <div class="container">
+        <table width="40%" class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Id</th>
+                    <th>Area</th>
+                    <th>Delivery Fees</th>
+                    <th>Deliver in minutes</th>
+                    <td>Update</td>
+                    <td>Delete</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let iArae of deliveryAreaList;let i=index">
+                    <td>{{i+1}}</td>
+                    <td><a>{{iArae.id}}</a></td>
+                    <td>{{iArae.areaBean.nameEn}}</td>
+                    <td>{{iArae.deliveryFees | currency}}</td>
+                    <td>{{iArae.deliverInMinutes}}</td>
+                    <td><button class="btn btn-primary" (click)="updateArea(iArae.id)">update</button></td>
+                    <td><button class="btn btn-danger" (click)="removeArea(iArae.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

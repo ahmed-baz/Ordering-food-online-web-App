@@ -1,0 +1,22 @@
+<div style="margin-left: 10px;">
+    <h2 class="font-weight-bold">Update <span style="font-weight: bold; color: blue;"></span></h2>
+</div>
+<div class="container">
+    <fieldset class="form-groub">
+        <label>Area</label>
+        <ng-select [searchable]="true" [items]="areaList" bindLabel="nameEn" [(ngModel)]="selectedAreaItem">
+        </ng-select>
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>Delivery Fees</label>
+        <input class="form-control" type="text" [(ngModel)]="deliveryArea.deliveryFees" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <label>Delivery in minutes</label>
+        <input class="form-control" type="text" [(ngModel)]="deliveryArea.deliverInMinutes" required="required">
+    </fieldset>
+    <fieldset class="form-groub">
+        <button style="margin: 10px;" class="btn btn-success" (click)="addDeliveryArea()">Add</button>
+        <button class="btn btn-warning" (click)="back()">Back</button>
+    </fieldset>
+</div>

@@ -9,7 +9,7 @@ import { AuthenticationManagerService } from '../service/authentication/authenti
 })
 export class LoginComponent implements OnInit {
 
-  isValid: boolean = false
+  isValid: Boolean = false
   userName: string = "";
   password: string = "";
   message: string = 'Invalid user name or password';
@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit {
 
   checkLogin() {
     this.authenticationManagerService.checkLogin(this.user).subscribe(
-      data => {
+      response => {
         this.isValid = true
-      })
+      });
 
     if (this.isValid) {
       this.router.navigate(['home', this.userName])
@@ -44,6 +44,5 @@ export class LoginComponent implements OnInit {
 export class User {
   public userName: string;
   public password: string
-  constructor(
-  ) { }
+  constructor() { }
 }

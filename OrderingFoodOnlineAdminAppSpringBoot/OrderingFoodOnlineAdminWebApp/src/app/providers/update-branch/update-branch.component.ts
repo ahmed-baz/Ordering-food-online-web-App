@@ -27,6 +27,9 @@ export class UpdateBranchComponent implements OnInit {
 
   updatebranch() {
     this.branch.area = this.selectedAreaItem
+    this.branch.provider = this.provider
+    console.log(this.branch.openAt)
+    console.log(this.branch.closeAt)
     this.providerManagerService.updateBranch(this.branch).subscribe(
       response => {
         this.router.navigate(['branchList', this.providerId])
@@ -39,14 +42,31 @@ export class UpdateBranchComponent implements OnInit {
 
   ngOnInit(): void {
     this.branchId = this.route.snapshot.params['branchId'];
-    this.branchId
+    this.providerId = this.route.snapshot.params['providerId'];
+
+    this.findProviderById();
+    this.findBranchById();
+    this.findAreaList();
+
+  }
+
+  findProviderById() {
+    this.providerManagerService.findProviderById(this.providerId).subscribe(
+      data => {
+        this.provider = data
+      }
+    );
+  }
+
+  findBranchById() {
     this.providerManagerService.findBranchById(this.branchId).subscribe(
       data => {
         this.branch = data
-        this.providerId = this.branch.provider.id
       }
     );
+  }
 
+  findAreaList() {
     this.lookupsManagerService.findAreaList().subscribe(
       data => {
         this.areaList = data

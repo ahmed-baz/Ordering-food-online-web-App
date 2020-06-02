@@ -30,6 +30,8 @@ public class DeliveryAreaTransformer implements SeniorConstant, GeneralTransform
     @Override
     public DeliveryAreaEntity fromBeanToEntity(DeliveryAreaBean bean) {
         DeliveryAreaEntity entity = new DozerBeanMapper().map(bean, DeliveryAreaEntity.class);
+        entity.setArea(areaTransformer.fromBeanToEntity(bean.getAreaBean()));
+        entity.setBranch(branchTransformer.fromBeanToEntity(bean.getBranchBean()));
         return entity;
     }
 
@@ -38,7 +40,7 @@ public class DeliveryAreaTransformer implements SeniorConstant, GeneralTransform
         DeliveryAreaBean bean = new DozerBeanMapper().map(entity, DeliveryAreaBean.class);
         AreaEntity area = entity.getArea();
         BranchEntity branch = entity.getBranch();
-        AreaBean areaBean = areaTransformer.fromEntityToBeanWithCity(area, lang);
+        AreaBean areaBean = areaTransformer.fromEntityToBean(area, lang);
         BranchBean branchBean = branchTransformer.fromEntityToBean(branch, lang);
         bean.setAreaBean(areaBean);
         bean.setBranchBean(branchBean);
