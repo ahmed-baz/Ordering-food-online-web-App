@@ -6,6 +6,7 @@ Application for ordering food online like otlob.
 3- Admin app: a web app.<br/>
 ### Technologies,Tools and Platforms are used:
 #### the common technologies:
+This project the implementation of the admin web app.<br/>
 Java SE, OOP, MySql DB,Spring Data and Hibernate.<br/>
 there is more than one presentation.<br/>
 1- Admin web app using Servlets,JSP,Spring Web MVC,HTML,CSS and jQuery.<br/>
