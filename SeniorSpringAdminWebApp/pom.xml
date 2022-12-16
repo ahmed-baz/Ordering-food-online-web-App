@@ -12,7 +12,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <SpringVersion>5.2.4.RELEASE</SpringVersion>
+        <SpringVersion>5.2.20.RELEASE</SpringVersion>
 
     </properties>
     
